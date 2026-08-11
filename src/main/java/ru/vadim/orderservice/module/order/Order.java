@@ -6,6 +6,6 @@ import ru.vadim.orderservice.module.customer.Customer;
 
 public record Order(UUID orderId,
                     Customer customer,
-                    OrderItem item,
+                    OrderItem orderItem,
                     LocalDateTime createdAt) {
 }
