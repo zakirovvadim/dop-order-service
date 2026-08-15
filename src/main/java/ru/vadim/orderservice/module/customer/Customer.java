@@ -15,7 +15,7 @@ public sealed interface Customer {
     record Business(String id,
                     String name,
                     String taxId,
-                    Address address) {
+                    Address address) implements Customer {
 
     }
 }
