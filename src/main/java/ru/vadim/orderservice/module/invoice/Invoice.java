@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.UUID;
 import ru.vadim.orderservice.module.common.PriceSummary;
 
-public interface Invoice {
+public sealed interface Invoice {
 
     record Paid(String id,
                 UUID orderId,
