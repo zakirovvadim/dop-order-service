@@ -5,7 +5,7 @@ import java.util.List;
 
 public sealed interface ProductStatus {
 
-    record Activee(Product product) implements ProductStatus {
+    record Active(Product product) implements ProductStatus {
     }
     record Discountinued(String productId,
                          String reason,

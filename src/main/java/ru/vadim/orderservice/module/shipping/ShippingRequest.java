@@ -5,5 +5,5 @@ import java.util.UUID;
 
 public record ShippingRequest(UUID orderId,
                               Recipient recipient,
-                              List<ShipmentItem> items) {
+                              List<ShipmentItem> shipmentItems) {
 }

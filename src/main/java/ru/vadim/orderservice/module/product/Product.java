@@ -16,7 +16,7 @@ public sealed interface Product {
     record Bundle(String productId,
                   String name,
                   double originalPrice,
-                  double discountPrice,
+                  double discountedPrice,
                   List<Single> items) implements Product {
 
     }

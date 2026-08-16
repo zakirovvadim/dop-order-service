@@ -13,7 +13,7 @@ public class PriceCalculatorImpl implements PriceCalculator {
         var quantity = order.orderItem().quantity();
         return switch (order.orderItem().product()) {
             case Single single -> this.toPriceSummary(single.price(), single.price(), quantity, state);
-            case Bundle bundle -> this.toPriceSummary(bundle.originalPrice(), bundle.discountPrice(), quantity, state);
+            case Bundle bundle -> this.toPriceSummary(bundle.originalPrice(), bundle.discountedPrice(), quantity, state);
         };
     }
 

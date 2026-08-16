@@ -8,7 +8,7 @@ import ru.vadim.orderservice.module.order.CreateOrderCommand;
 import ru.vadim.orderservice.module.order.Order;
 import ru.vadim.orderservice.module.order.OrderItem;
 import ru.vadim.orderservice.module.product.Product;
-import ru.vadim.orderservice.module.product.ProductStatus.Activee;
+import ru.vadim.orderservice.module.product.ProductStatus.Active;
 import ru.vadim.orderservice.module.product.ProductStatus.Discountinued;
 import ru.vadim.orderservice.service.RequestValidatorService;
 
@@ -32,7 +32,7 @@ public class RequestValidatorServiceImpl implements RequestValidatorService {
 
     private Product getProduct(String productId) {
         return switch (this.productClient.getProduct(productId)) {
-            case Activee activee -> activee.product();
+            case Active active -> active.product();
             case Discountinued discountinued -> ApplicationExceptions.discontinuedNotFound(discountinued);
         };
     }
