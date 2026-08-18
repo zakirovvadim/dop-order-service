@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 
 public record OrderRequest(@NotBlank String customerId,
                            @NotBlank String productId,
-                           @Min(1) int quantity
+                           @Min(1) int quantity,
+                           String couponCode
 ) {
 }

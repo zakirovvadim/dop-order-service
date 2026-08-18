@@ -7,11 +7,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestClient;
 import ru.vadim.orderservice.client.BillingClient;
+import ru.vadim.orderservice.client.CouponClient;
 import ru.vadim.orderservice.client.CustomerClient;
 import ru.vadim.orderservice.client.PaymentClient;
 import ru.vadim.orderservice.client.ProductClient;
 import ru.vadim.orderservice.client.ShippingClient;
 import ru.vadim.orderservice.client.impl.BillingServiceClient;
+import ru.vadim.orderservice.client.impl.CouponServiceClient;
 import ru.vadim.orderservice.client.impl.CustomerServiceClient;
 import ru.vadim.orderservice.client.impl.PaymentServiceClient;
 import ru.vadim.orderservice.client.impl.ProductServiceClient;
@@ -65,8 +67,13 @@ public class ApplicationConfiguration {
     }
 
     @Bean
-    public RequestValidatorService requestValidatorService(ProductClient productClient, CustomerClient customerClient) {
-        return new RequestValidatorServiceImpl(productClient, customerClient);
+    public CouponClient couponClient(@Value("${coupon.service.url}") String url) {
+        return new CouponServiceClient(buildRestClient(url));
+    }
+
+    @Bean
+    public RequestValidatorService requestValidatorService(ProductClient productClient, CustomerClient customerClient, CouponClient couponClient) {
+        return new RequestValidatorServiceImpl(productClient, customerClient, couponClient);
     }
 
     @Bean
